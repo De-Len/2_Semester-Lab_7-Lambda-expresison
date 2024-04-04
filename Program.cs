@@ -95,6 +95,10 @@ public class BinaryTreeCollection<T> : IEnumerable<T>
         {
             throw new NotImplementedException();
         }
+        
+        public void Dispose()
+        {
+        }
     }
 }
 
