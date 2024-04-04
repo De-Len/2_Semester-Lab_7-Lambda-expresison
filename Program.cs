@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -13,6 +13,26 @@ public class BinaryTreeCollection<T> : IEnumerable<T>
         public BinaryTreeNode(T value)
         {
             Value = value;
+        }
+
+        public void InitializeNodes(T rootValue)
+        {
+            Left = new BinaryTreeNode(default(T));
+            Right = new BinaryTreeNode(default(T));
+            Left.Left = new BinaryTreeNode(default(T));
+            Right.Left = new BinaryTreeNode(default(T));
+            Left.Right = new BinaryTreeNode(default(T));
+            Right.Right = new BinaryTreeNode(default(T));
+        }
+
+        public void AddNodes(T firstNode, T SecondNode, T ThirdNode, T FourthNode, T FifthNode, T SixthNode)
+        {
+            Left.Value = firstNode;
+            Right.Value = SecondNode;
+            Left.Left.Value = ThirdNode;
+            Left.Right.Value = FourthNode;
+            Right.Left.Value = SecondNode;
+            Right.Right.Value = SecondNode;
         }
     }
 
@@ -95,7 +115,7 @@ public class BinaryTreeCollection<T> : IEnumerable<T>
         {
             throw new NotImplementedException();
         }
-        
+
         public void Dispose()
         {
         }
@@ -135,13 +155,10 @@ class Program
 {
     static void Main()
     {
+        Random rand = new Random();
         BinaryTreeCollection<int>.BinaryTreeNode root = new BinaryTreeCollection<int>.BinaryTreeNode(5);
-        root.Left = new BinaryTreeCollection<int>.BinaryTreeNode(3);
-        root.Right = new BinaryTreeCollection<int>.BinaryTreeNode(8);
-        root.Left.Left = new BinaryTreeCollection<int>.BinaryTreeNode(1);
-        root.Left.Right = new BinaryTreeCollection<int>.BinaryTreeNode(4);
-        root.Right.Left = new BinaryTreeCollection<int>.BinaryTreeNode(7);
-        root.Right.Right = new BinaryTreeCollection<int>.BinaryTreeNode(9);
+        root.InitializeNodes(1);
+        root.AddNodes(1, 2, 3, 4, 5, 6);
 
         BinaryTree<int> tree = new BinaryTree<int>(root);
 
